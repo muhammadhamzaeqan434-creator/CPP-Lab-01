@@ -1,0 +1,118 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+class Ride
+{
+private:
+    string vehicle;
+    float distance;
+    int passengers;
+
+public:
+    Ride()
+    {
+        vehicle = "standard";
+        distance = 0;
+        passengers = 1;
+    }
+    Ride(string v, float d, int p)
+    {
+        vehicle = v;
+
+        if (d >= 0)
+            distance = d;
+        else
+            distance = 0;
+        if (p >= 1)
+            passengers = p;
+        else
+            passengers = 1;
+    }
+    void setVehicle(string v)
+    {
+        if (v == "standard" || v == "premium" || v == "SUV")
+            vehicle = v;
+        else
+            vehicle = "standard";
+    }
+
+    void setDistance(float d)
+    {
+        if (d >= 0)
+            distance = d;
+        else
+            distance = 0;
+    }
+    void setPassengers(int p)
+    {
+        if (p >= 1)
+            passengers = p;
+        else
+            passengers = 1;
+    }
+    void addPassenger()
+    {
+        passengers++;
+    }
+    float calculateFare()
+    {
+        float baseFare;
+        float ratePerKm;
+        float extraPassengerFare;
+
+        if (vehicle == "standard")
+        {
+            baseFare = 5;
+            ratePerKm = 1.5;
+            extraPassengerFare = 1;
+        }
+        else if (vehicle == "premium")
+        {
+            baseFare = 10;
+            ratePerKm = 2.5;
+            extraPassengerFare = 2;
+        }
+        else
+        {
+            baseFare = 15;
+            ratePerKm = 3;
+            extraPassengerFare = 3;
+        }
+
+        return baseFare
+             + (distance * ratePerKm)
+             + ((passengers - 1) * extraPassengerFare);
+    }
+
+    // Display ride summary
+    void displaySummary()
+    {
+        cout << "\n--- Ride Summary ---\n";
+        cout << "Vehicle       : " << vehicle << endl;
+        cout << "Distance      : " << distance << " km" << endl;
+        cout << "Passengers    : " << passengers << endl;
+        cout << fixed << setprecision(2);
+        cout << "Total Fare    : $" << calculateFare() << endl;
+       
+    }
+};
+
+int main()
+{
+    Ride ride1;
+    ride1.setVehicle("standard");
+    ride1.setDistance(-150);
+    ride1.setPassengers(-3);
+    ride1.addPassenger();
+    ride1.addPassenger();
+
+    // 6. Calculate fare
+    cout << "Fare of Ride 1: $" << ride1.calculateFare() << endl;
+
+    // 7. Display ride summary
+    ride1.displaySummary();
+
+    return 0;
+}
