@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+class Pizza{
+private:
+    string size;
+    float chesse_top;    // top mean topping
+    float poper_top;
+    float ham_top;
+ public:
+    void order(string s = "L", float ch = 0, float pop = 0, float ham = 0){
+    size = s;
+    chesse_top = ch;
+    poper_top = pop;
+    ham_top = ham;
+    }
+    float cost(){
+    if(size =="s")
+    return 200 * 2*(chesse_top + poper_top + ham_top);
+    else if(size == "M")
+    return 300 * 2*(chesse_top + poper_top + ham_top);
+    else if(size == "L")
+    return 400 * 2*(chesse_top + poper_top + ham_top);
+    else if(size == "XL")
+    return 500 * 2*(chesse_top + poper_top + ham_top); 
+    }  
+    void setsize(string s){
+    size = s;
+    }
+    void set_chesse_top(float ch){
+        chesse_top = ch;
+    }
+    void set_poper_top(float pop){
+        poper_top = pop;
+    }
+    void set_ham_top(float ham){
+        ham_top = ham;
+    }
+    void review_order(){
+        cout<<"---------Your order is this----------"<<endl;
+        cout<<"The size of pizza is "<<size;
+        cout<<"\n The no of chesse topping is "<<chesse_top;
+        cout<<"\n The no of Poper topping is "<<poper_top;
+        cout<<"\n The no of Ham topping is "<<ham_top;
+    }
+};
+int main(){
+    Pizza P1,P2;
+    P1.order("s",3,5,3);
+    P1.setsize("L");
+    P1.set_chesse_top(4);
+    cout<<"Total bill is "<<P1.cost()<<endl;
+    P1.review_order();
+    return 0;
+}
