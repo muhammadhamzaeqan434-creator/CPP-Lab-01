@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+class Cmp_no{
+    private:
+    float real , img;
+    public:
+    Cmp_no(float r , float i){
+        real = r;
+        img = i;
+    }
+    void setvalue_r(float r){
+        real = r;
+    }
+    void setvalue_i(float i){
+        img = i;
+    }
+    void display(){
+        cout<<real<<" + "<<img<<"i"<<endl;
+    }
+    Cmp_no add( Cmp_no no){
+       Cmp_no result(real + no.real , img + no.img);
+       return result;
+    }
+    Cmp_no sub( Cmp_no no){
+       Cmp_no result(real - no.real , img - no.img);
+       return result;
+    }
+};
+int main(){
+    
+    Cmp_no c1(3,6);
+    Cmp_no c2(4,2);
+    c1.setvalue_i(3);
+    cout<<"The c1 complex number is ";
+    c1.display();
+    Cmp_no c3 = c1.add(c2);
+    cout<<"The addition of c1 and c2 is ";
+    c3.display();
+
+
+    return 0;
+}
