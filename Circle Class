@@ -1,0 +1,34 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+class Circle {
+    private:
+    float pi = 3.14;
+    public:
+    float rad;
+    float setrad(float radi){
+        if(radi>0)
+        rad = radi;
+        else
+        rad = 6;
+        return rad;
+    }
+    float getrad(){
+        return rad;
+    }
+    float area(){
+        return pi*pow(rad,2);
+    }
+    float cirm(){
+        return 2*pi*rad;
+    }
+};
+int main(){
+    Circle c1,c2;
+    c1.setrad(4);
+    c2.setrad(-2);
+   cout<<"Area of c1 circle is "<<c1.area();
+   cout<<"\nCircumfarenc of c2 circle is "<<c2.cirm();
+
+    return 0;
+}
